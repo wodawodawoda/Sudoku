@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
-import ReactDOM from 'react-dom';
-
-import Field from './Field'
+import Field from './Field';
 
 class Board extends Component {
   fields() {

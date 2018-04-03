@@ -11,22 +11,3 @@ class Field extends Component {
 }
 
 export default Field
-
-
-// import React, {Component} from 'react';
-//
-// class Field extends Component {
-//   render() {
-//     const edit = this.props.value === '.';
-//     return (
-//       <div className={edit ? 'board__field edit' : 'board__field'}
-//            name={this.props.value}
-//            contentEditable={edit}
-//       >
-//         {!edit ? this.props.value : ''}
-//       </div>
-//     )
-//   }
-// }
-//
-// export default Field

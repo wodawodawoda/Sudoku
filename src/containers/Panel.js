@@ -17,7 +17,7 @@ class Panel extends Component {
         <button className="panel__btn panel__btn--solve" onClick={this.props.solve}>solve</button>
         <Stoper run={this.props.run} getTime={this.props.getTime}/>
       </div>
-    )
+    );
   }
 }
 

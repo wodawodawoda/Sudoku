@@ -7,7 +7,6 @@ import Board from './Board'
 import Panel from './Panel'
 import Win from './Win'
 
-
 class App extends Component {
   constructor() {
     super();
@@ -30,21 +29,21 @@ class App extends Component {
       board: board,
       solution: solution,
       run: true
-    })
+    });
   }
   changeSum(val) {
     const value = val.value || '.'
     if(/[1-9]/.test(value) || /\./.test(value)) {
       this.setState({
         board: this.state.board.substr(0, val.id) + value + this.state.board.substr(Number(val.id) + 1)
-      })
+      });
     }
   }
   solve() {
     this.setState({
       template: this.state.solution,
       run: false
-    })
+    });
   }
   render() {
     return(
@@ -54,8 +53,6 @@ class App extends Component {
         <Board template={this.state.template} changeSum={this.changeSum}/>
         {this.state.board === this.state.solution && this.state.board && <Win click={this.getTemplate} time={this.props.time}/>} {/*TODO: Remove iniline if statement*/}
       </div>
-
-
     )
   }
 }

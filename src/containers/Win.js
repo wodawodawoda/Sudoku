@@ -7,7 +7,7 @@ class Win extends Component {
         <h1>You WIN</h1>
         <button className="win__btn" onClick={this.props.click}>new game</button>
       </div>
-    )
+    );
   }
 }
 

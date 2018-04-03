@@ -6,35 +6,16 @@ class App extends React.Component {
         super(props);
         this.state = {
             time: 0,
-            run: false,
-            record: []
+            run: false
         }
-        this.start = this.start.bind(this);
-        this.stop = this.stop.bind(this);
-        this.record = this.record.bind(this);
         this.reset = this.reset.bind(this);
         this.updateTime = this.updateTime.bind(this);
     }
     //Callbacks
-    start() {
-        this.setState({run: true});
-    }
-    stop() {
-        this.setState({run: false});
-    }
-    record() {
-        this.setState({
-            record: [this.formatTime(this.state.time), ...this.state.record]
-        });
-    }
     reset() {
       this.setState({
-        time: 0,
-        record: []
+        time: 0
       });
-    }
-    getTime(time) {
-        this.setState({time: time});
     }
     formatTime(time) {
       const minutes = Math.floor(time / 6000),
@@ -44,7 +25,7 @@ class App extends React.Component {
     }
     // Run
     interval() {
-        if(!this.state.run) {this.int = setInterval(this.updateTime, 10)}; // runs when new props/state is recived but not yet upadted
+        if(!this.state.run) {this.int = setInterval(this.updateTime, 10)} // runs when new props/state is recived but not yet upadted
     }
     updateTime() {
         this.setState({time: this.state.time + 1});
