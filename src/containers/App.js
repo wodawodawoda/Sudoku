@@ -9,8 +9,8 @@ import Win from './Win'
 
 
 class App extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state= {
       template: "",
       solution: "",
@@ -23,8 +23,9 @@ class App extends Component {
     this.getTime = this.getTime.bind(this);
     this.changeSum= this.changeSum.bind(this);
   }
-  getTemplate() {
-    const board = sudoku.generate(80);
+  getTemplate(event) {
+    const level = event.target.nextElementSibling.value;
+    const board = sudoku.generate(level);
     const solution = sudoku.solve(board);
     // const arr = [...template]
     // let sum = 0;
