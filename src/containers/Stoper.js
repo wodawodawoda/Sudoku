@@ -56,19 +56,18 @@ class App extends React.Component {
     componentWillReceiveProps(nextProps) {
       this.setState({
         run: nextProps.run
-      })
-      // if(this.state.run) this.reset()
+      });
+      if(nextProps.run) {
+        this.reset();
+        this.interval();
+      } else if (!nextProps.run) {
+        this.stopInterval();
+      }
     }
-    componentWillUpdate(nextProps, nextState) {
-        if(nextState.run === true) {
-            this.interval();
-        } else if (nextState.run === false) {
-            this.stopInterval();
-        }
-    }
+
     render() {
         return(
-          <Counter time={this.state.time} run={this.state.run} getTime={this.getTime} format={this.formatTime}/>
+          <Counter time={this.state.time} run={this.state.run} format={this.formatTime}/>
         );
     }
 }

@@ -4,17 +4,31 @@
 .sudoku
   display: grid
   grid-gap: 20px
-
+  border: 1px dotted black
+.header
+  margin: 0 auto
+  text-align: center
+  background: gray
+  width: 100%
+.header__name
+  text-transform: uppercase
+.header__text
 .panel
   display: flex
   flex-flow: column nowrap
   justify-content: space-around
   align-items: center
 .panel__btn
-  margin-bottom: 20px
-  font-size: 1.3rem
   text-transform: uppercase
+.panel__btn--new-game
+  margin-bottom: 5px
+  font-size: 1.3rem
+.panel__btn--solve
+  margin-top: 20px
+  font-size: 1rem
+
 .counter
+  margin-top: 20px
 .counter__time
   font-size: 1.2rem
 
@@ -24,6 +38,7 @@
   grid-template-columns: repeat(9, 30px);
   grid-template-rows: repeat(9, 30px);
   grid-gap: 10px
+  margin-bottom: 20px
 .board__field
   display: inline-flex
   justify-content: center
