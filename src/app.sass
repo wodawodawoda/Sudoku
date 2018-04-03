@@ -1,0 +1,52 @@
+*
+  box-sizing: border-box
+
+.sudoku
+  display: grid
+  grid-gap: 20px
+
+
+.panel
+  display: flex
+  flex-flow: column nowrap
+  justify-content: space-around
+  align-items: center
+.panel__btn
+  margin-bottom: 20px
+  font-size: 1.3rem
+  text-transform: uppercase
+.counter
+.counter__time
+  font-size: 1.2rem
+
+.board
+  display: grid
+  margin: 0 auto
+  grid-template-columns: repeat(9, 30px);
+  grid-template-rows: repeat(9, 30px);
+  grid-gap: 10px
+.board__field
+  display: inline-flex
+  justify-content: center
+  align-items: center
+  border: 2px solid black
+.board__field--input
+  max-width: 30px
+  text-align: center
+  -moz-appearance: textfield
+  appearance: textfield
+  margin: 0
+
+.win
+  display: flex
+  flex-flow: column nowrap
+  position: absolute
+  height: 100%
+  width: 100%
+  top: 0
+  left: 0
+  background: white
+  justify-content: center
+  align-items: center
+
+

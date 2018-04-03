@@ -3,6 +3,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const OptimizeJsPLugin = require('optimize-js-plugin');
 const path = require('path');
+require("babel-polyfill");
 
 const env = process.env.NODE_ENV || 'development';
 const plugins = [
@@ -29,6 +30,7 @@ plugins.push(
 module.exports = {
     entry: [
 		'react-hot-loader/patch',
+		'babel-polyfill',
 		'./src/index.js'
     ],
     output: {
