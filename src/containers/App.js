@@ -20,8 +20,9 @@ class App extends Component {
       al: ''
     }
     this.getTemplate = this.getTemplate.bind(this);
-    this.getTime = this.getTime.bind(this);
+    // this.getTime = this.getTime.bind(this);
     this.changeSum= this.changeSum.bind(this);
+    this.solve= this.solve.bind(this);
   }
   getTemplate(event) {
     const level = event.target.nextElementSibling.value;
@@ -49,14 +50,20 @@ class App extends Component {
     if(this.state.run) {this.timer = setInterval(() => this.setState({time: time + 1}), 1000)}
   }
 
-  getTime(time) {
-    console.log(time) // "this.setState is not a function???"
+  // getTime(time) {
+  //   console.log(time) // "this.setState is not a function???"
+  // }
+  solve() {
+    this.setState({
+      template: this.state.solution,
+      run: false
+    })
   }
   render() {
     return(
       <div className="sudoku">
         <Header />
-        <Panel click={this.getTemplate} run={this.state.run} getTime={this.getTime}/>
+        <Panel click={this.getTemplate} solve={this.solve} run={this.state.run}/>
         <Board template={this.state.template} changeSum={this.changeSum}/>
         {this.state.win && <Win click={this.getTemplate} time={this.props.time}/>}
       </div>

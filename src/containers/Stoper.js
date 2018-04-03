@@ -57,9 +57,7 @@ class App extends React.Component {
       this.setState({
         run: nextProps.run
       })
-      if(this.state.run) this.reset()
-      // if(nextProps.win)
-      this.props.getTime(this.formatTime(this.state.time))
+      // if(this.state.run) this.reset()
     }
     componentWillUpdate(nextProps, nextState) {
         if(nextState.run === true) {
