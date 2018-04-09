@@ -38,6 +38,7 @@ class App extends Component {
         board: this.state.board.substr(0, val.id) + value + this.state.board.substr(Number(val.id) + 1)
       });
     }
+    console.log(this.state.board, val.id)
   }
   solve() {
     this.setState({

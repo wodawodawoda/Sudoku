@@ -5,6 +5,7 @@
   display: grid
   grid-gap: 20px
   border: 1px dotted black
+  padding-bottom: 40px
 
 .header
   margin: 0 auto
@@ -16,60 +17,78 @@
 
 .panel
   display: flex
-  flex-flow: column nowrap
+  flex-flow: row wrap
   justify-content: space-around
   align-items: center
 .panel__btn
   text-transform: uppercase
-.panel__btn--new-game
-  margin-bottom: 5px
   font-size: 1.3rem
+  padding: 20px
+  border: 0
+  transition: 0.3s
+.panel__btn--new-game
+  border-radius: 10px 0 0 10px
+.panel__btn--new-game:hover, .panel__btn--solve:hover
+  box-shadow: 0 0 3px 3px grey
+.panel__select
+  font-size: 1.3rem
+  padding: 19px
+  background: lightgrey
+  z-index: 1
+  transition: 0.2s
+  margin: 0 10px
+.panel__select:hover
+  box-shadow: 0 0 3px 3px grey
+.panel__select::after
+  content: '>'
 .panel__btn--solve
-  margin-top: 20px
-  font-size: 1rem
+  border-radius: 0 10px 10px 0
 
-.counter
+.panel__timer
+  width: 100%
+  text-align: center
+  font-size: 2rem
   margin-top: 20px
-.counter__time
-  font-size: 1.2rem
+
 
 .board
-  display: grid
   margin: 0 auto
-  //background: black
-  grid-template-columns: repeat(9, 30px);
-  grid-template-rows: repeat(9, 30px);
-  grid-gap: 2px
-  margin-bottom: 20px
+  //margin-bottom: 20px // Weird firefox bug with margin-bottom/top on table (td-s height behaves like animation)
+.board__row
+
 .board__field
   background: white
   display: inline-flex
   justify-content: center
   align-items: center
-  font-size: 1.5em
+  font-size: 1.5rem
   outline: 1px solid black
+  width: 40px
+  height: 40px
 .board__field--input
+  font-size: 1.6rem // in chrome lower values cause bugs in table layout
+  background: lightgray
+  color: darkgoldenrod
   text-align: center
-  -moz-appearance: textfield
-  appearance: textfield
   border: none
+  outline: 0
 
 
-$left: 3, 6
-$right: 2, 5
-$width: 3px
-
-@for $i from 0 through 8
-  @each $item in $right
-    #p#{$i}-#{$item}
-      border-right: $width solid black
-    #p#{$item}-#{$i}
-      border-bottom: $width solid black
-  @each $item in $left
-    #p#{$i}-#{$item}
-      border-left: $width solid black
-    #p#{$item}-#{$i}
-      border-top: $width solid black
+//$left: 3, 6
+//$right: 2, 5
+//$width: 3px
+//
+//@for $i from 0 through 8
+//  @each $item in $right
+//    #p#{$i}-#{$item}
+//      border-right: $width solid black
+//    #p#{$item}-#{$i}
+//      border-bottom: $width solid black
+//  @each $item in $left
+//    #p#{$i}-#{$item}
+//      border-left: $width solid black
+//    #p#{$item}-#{$i}
+//      border-top: $width solid black
 
 .win
   display: flex
@@ -83,8 +102,8 @@ $width: 3px
   justify-content: center
   align-items: center
 
-
-@media (min-width: 600px)
-  .board
-    grid-template-columns: repeat(9, 60px)
-    grid-template-rows: repeat(9, 60px)
+//
+//@media (min-width: 600px)
+//  .board
+//    grid-template-columns: repeat(9, 60px)
+//    grid-template-rows: repeat(9, 60px)
