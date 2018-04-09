@@ -6,10 +6,6 @@ class Panel extends Component {
     super(props);
 
   }
-  componentDidMount(prevProps) {
-    console.log(prevProps)
-  }
-
   render() {
     const {timeout, enabled, count} = this.props.state;
     return(
@@ -17,8 +13,8 @@ class Panel extends Component {
         <div className="panel__start">
         <button className="panel__btn panel__btn--new-game"
                 onClick={event => {
-                  this.props.reset();
-                  this.props.click(event);
+                  this.props.reset(); // Reset timer
+                  this.props.click(event); // Setup new sudoku board
                 }}>
           new game
         </button>
@@ -32,15 +28,14 @@ class Panel extends Component {
         </select>
           <button className="panel__btn panel__btn--solve"
                   onClick={() => {
-                    this.props.solve();
-                    this.props.pause();
+                    this.props.solve(); // Display solved sudoku board
+                    this.props.pause(); // Pause time
                   }}>
             solve
           </button>
         </div>
-
          <ReactInterval {...{timeout, enabled}}
-                        callback={() => this.props.count()} />
+                        callback={() => this.props.count()} /> {/*Timer*/}
         <div className="panel__timer">Time: {count}</div>
       </div>
     );

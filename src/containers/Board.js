@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import ReactDOM from 'react-dom';
 import Field from './Field';
 import _ from 'lodash';
 
@@ -37,24 +36,26 @@ class Board extends Component {
     //   }
     // }
   }
+  // On board focus management
   handleFocus(event) {
     const inputs = document.querySelectorAll('input')
-    const idx = [...inputs].indexOf(event.target);
+    const idx = [...inputs].indexOf(event.target); // Get index of focused input
     switch (event.keyCode) {
       case 39:
-        let next = (idx === inputs.length - 1) ? 0 : idx + 1;
+        let next = (idx === inputs.length - 1) ? 0 : idx + 1; // Prevent to focus outside the board
         inputs[next].focus();
         break;
       case 37:
-        let prev = idx ? idx - 1 : inputs.length - 1;
+        let prev = idx ? idx - 1 : inputs.length - 1; // Prevent to focus outside the board
         inputs[prev].focus();
         break;
     }
   }
   render() {
-
     return(
-      <table className="board" onInput={event => this.props.changeSum(event.target)} onKeyUp={event => this.handleFocus(event)}>
+      <table className="board"
+             onInput={event => this.props.changeSum(event.target)}
+             onKeyUp={event => this.handleFocus(event)}>
         <tbody>
         {this.fields()}
         </tbody>

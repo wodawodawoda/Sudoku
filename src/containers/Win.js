@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 class Win extends Component {
   componentDidMount() {
-    this.props.pause()
+    this.props.pause() // Pause time
   }
   render() {
     return(
@@ -11,8 +11,8 @@ class Win extends Component {
         <div className="win__start">
           <button className="win__btn win__btn--new-game"
                   onClick={event => {
-                    this.props.reset();
-                    this.props.click(event);
+                    this.props.reset(); // Reset timer
+                    this.props.click(event); // Set up new sudoku board
                   }}>
             new game
           </button>

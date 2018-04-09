@@ -14,7 +14,7 @@ class App extends Component {
       template: "",
       solution: "",
       board: "",
-      //counter state
+      //counter states
       enabled: false,
       timeout: 1000,
       count: 0
@@ -26,6 +26,7 @@ class App extends Component {
     this.pause= this.pause.bind(this);
     this.count= this.count.bind(this);
   }
+  // Set up new sudoku board
   getTemplate(event) {
     const level = event.target.nextElementSibling.value;
     const board = sudoku.generate(level); // Change difficulty level '< 81'
@@ -36,6 +37,7 @@ class App extends Component {
       solution: solution
     });
   }
+  // Change player board values string
   changeSum(val) {
     console.log(val)
     const value = val.value || '.'
@@ -44,13 +46,14 @@ class App extends Component {
         board: this.state.board.substr(0, val.id) + value + this.state.board.substr(Number(val.id) + 1)
       });
     }
-    console.log(this.state.board, val.id)
   }
+  // Display solution
   solve() {
     this.setState({
       template: this.state.solution
     });
   }
+  // Display Win modal when player wins
   win() {
     if(this.state.board === this.state.solution && this.state.board) {
       // Can't use set state enabled to false here. (https://stackoverflow.com/questions/48497358/reactjs-maximum-update-depth-exceeded-error?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa)
@@ -73,8 +76,14 @@ class App extends Component {
     return(
       <div className="sudoku">
         <Header />
-        <Panel click={this.getTemplate} solve={this.solve} state={this.state} pause={this.pause} reset={this.reset} count={this.count}/>
-        <Board template={this.state.template} changeSum={this.changeSum}/>
+        <Panel click={this.getTemplate}
+               solve={this.solve}
+               state={this.state}
+               pause={this.pause}
+               reset={this.reset}
+               count={this.count}/>
+        <Board template={this.state.template}
+               changeSum={this.changeSum}/>
         {this.win()}
       </div>
     )
