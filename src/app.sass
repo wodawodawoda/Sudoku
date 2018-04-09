@@ -15,7 +15,7 @@
 .header__name
   text-transform: uppercase
 
-.panel
+.panel, .win__btn
   display: flex
   flex-flow: row wrap
   justify-content: space-around
@@ -28,28 +28,32 @@
   transition: 0.3s
 .panel__btn--new-game
   border-radius: 10px 0 0 10px
-.panel__btn--new-game:hover, .panel__btn--solve:hover
   box-shadow: 0 0 3px 3px grey
+.panel__btn--new-game:hover
+  background: goldenrod
 .panel__select
+  box-shadow: 0 0 3px 3px grey
   font-size: 1.3rem
-  padding: 19px
-  background: lightgrey
+  padding: 20px
+  background: darkgrey
+  border: 0
   z-index: 1
-  transition: 0.2s
+  transition: 0.3s
   margin: 0 10px
 .panel__select:hover
-  box-shadow: 0 0 3px 3px grey
+  background: grey
 .panel__select::after
   content: '>'
 .panel__btn--solve
+  box-shadow: 0 0 3px 3px grey
   border-radius: 0 10px 10px 0
-
+.panel__btn--solve:hover
+  background: cornflowerblue
 .panel__timer
   width: 100%
   text-align: center
   font-size: 2rem
   margin-top: 20px
-
 
 .board
   margin: 0 auto
@@ -73,23 +77,6 @@
   border: none
   outline: 0
 
-
-//$left: 3, 6
-//$right: 2, 5
-//$width: 3px
-//
-//@for $i from 0 through 8
-//  @each $item in $right
-//    #p#{$i}-#{$item}
-//      border-right: $width solid black
-//    #p#{$item}-#{$i}
-//      border-bottom: $width solid black
-//  @each $item in $left
-//    #p#{$i}-#{$item}
-//      border-left: $width solid black
-//    #p#{$item}-#{$i}
-//      border-top: $width solid black
-
 .win
   display: flex
   flex-flow: column nowrap
@@ -101,8 +88,28 @@
   background: white
   justify-content: center
   align-items: center
+.win__start
+  display: flex
+  flex-flow: column nowrap
+  box-shadow: 0 0 5px 5px grey
+  border-radius: 10px 10px 0 0
+.win__btn
+  border-radius: 10px 10px 0 0
+  background: lightgrey
+.win__btn:hover
+  background: goldenrod
+.win__btn , .win__select
+  transition: 0.3s
+  border: 0
+  color: black
+  font-size: 1.5rem
+  padding: 10px 30px
+.win__select
+  background: darkgrey
+  border: none
+.win__select:hover
+  background: grey
 
-//
 //@media (min-width: 600px)
 //  .board
 //    grid-template-columns: repeat(9, 60px)

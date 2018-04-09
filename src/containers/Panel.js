@@ -4,27 +4,21 @@ import ReactInterval from 'react-interval';
 class Panel extends Component {
   constructor (props) {
     super(props);
-    this.state = {
-      enabled: false,
-      timeout: 1000,
-      count: 0
-    }
-    this.onToggleDestroy = this.onToggleDestroy.bind(this)
+
   }
-  onToggleDestroy() {
-    const {destroy} = this.state;
-    console.log('elo')
-    this.setState({count: 0, destroy: !destroy, enabled: false});
+  componentDidMount(prevProps) {
+    console.log(prevProps)
   }
+
   render() {
-    const {timeout, enabled, count} = this.state;
+    const {timeout, enabled, count} = this.props.state;
     return(
       <div className="panel">
         <div className="panel__start">
         <button className="panel__btn panel__btn--new-game"
                 onClick={event => {
-                  this.setState({enabled: true, count: 0});
-                  return this.props.click(event);
+                  this.props.reset();
+                  this.props.click(event);
                 }}>
           new game
         </button>
@@ -39,14 +33,14 @@ class Panel extends Component {
           <button className="panel__btn panel__btn--solve"
                   onClick={() => {
                     this.props.solve();
-                    this.setState({enabled: false})
+                    this.props.pause();
                   }}>
             solve
           </button>
         </div>
 
          <ReactInterval {...{timeout, enabled}}
-                        callback={() => this.setState({count: this.state.count + 1})} />
+                        callback={() => this.props.count()} />
         <div className="panel__timer">Time: {count}</div>
       </div>
     );

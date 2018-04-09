@@ -14,11 +14,17 @@ class App extends Component {
       template: "",
       solution: "",
       board: "",
-      run: false
+      //counter state
+      enabled: false,
+      timeout: 1000,
+      count: 0
     }
     this.getTemplate = this.getTemplate.bind(this);
     this.changeSum= this.changeSum.bind(this);
     this.solve= this.solve.bind(this);
+    this.reset= this.reset.bind(this);
+    this.pause= this.pause.bind(this);
+    this.count= this.count.bind(this);
   }
   getTemplate(event) {
     const level = event.target.nextElementSibling.value;
@@ -27,8 +33,7 @@ class App extends Component {
     this.setState({
       template: board,
       board: board,
-      solution: solution,
-      run: true
+      solution: solution
     });
   }
   changeSum(val) {
@@ -42,17 +47,37 @@ class App extends Component {
   }
   solve() {
     this.setState({
-      template: this.state.solution,
-      run: false
+      template: this.state.solution
     });
+  }
+  win() {
+    if(this.state.board === this.state.solution && this.state.board) {
+      // I wanted to to change state 'run' to false to trigger function in Panel.
+      // I'm getting error "Maximum update depth exceeded".
+      // Is this happening because state should be in parent component?
+      // this.setState({run: true});
+      return(
+        <Win click={this.getTemplate} time={this.props.time}/>
+      )
+    }
+  }
+  // Counter functions
+  reset() {
+    this.setState({enabled: true, count: 0});
+  }
+  pause() {
+    this.setState({enabled: false})
+  }
+  count() {
+    this.setState({count: this.state.count + 1})
   }
   render() {
     return(
       <div className="sudoku">
         <Header />
-        <Panel click={this.getTemplate} solve={this.solve} run={this.state.run}/>
+        <Panel click={this.getTemplate} solve={this.solve} state={this.state} pause={this.pause} reset={this.reset} count={this.count}/>
         <Board template={this.state.template} changeSum={this.changeSum}/>
-        {this.state.board === this.state.solution && this.state.board && <Win click={this.getTemplate} time={this.props.time}/>} {/*TODO: Remove iniline if statement*/}
+        {this.win()} {/*TODO: Remove iniline if statement*/}
       </div>
     )
   }

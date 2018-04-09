@@ -13,11 +13,22 @@ class Board extends Component {
       // } else {
       //   row++;
       // }
-      return <Field key={idx} id={idx} value={val} />;
+      return <Field key={idx} id={idx + 1} value={val} />;
     })
+
     return _.chunk(items, 9).map(function(group, idx) {
       return <tr key={idx} className="board__row">{group}</tr>
     });
+    // Match 9 squares prototype field = [[row],[row],[row],[row],[row]]
+    // for(let i = 0; i < 9; i++) {
+    //   let team = 1;
+    //   if(i === 3 || i === 6) team = team + 3
+    //   for(let j = 0; j < 9; j++) {
+    //     if(j < 3) field[i][j].addClass(`team${team}`)
+    //     else if(j < 6) field[i][j].addClass(`team${team + 1}`)
+    //     else field[i][j].addClass(`team${team + 2}`)
+    //   }
+    // }
   }
   render() {
     return(
