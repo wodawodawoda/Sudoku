@@ -26,7 +26,7 @@ class Board extends Component {
     return _.chunk(items, 9).map(function(group, idx) {
       return <tr key={idx} className="board__row">{group}</tr>
     });
-    // Match 9 squares prototype field = [[row],[row],[row],[row],[row]]
+    // Match 9 sudoku squares that contain 9 fields  input = [[row],[row],[row],[row],[row]]
     // for(let i = 0; i < 9; i++) {
     //   let team = 1;
     //   if(i === 3 || i === 6) team = team + 3
