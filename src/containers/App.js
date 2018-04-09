@@ -28,7 +28,7 @@ class App extends Component {
   }
   getTemplate(event) {
     const level = event.target.nextElementSibling.value;
-    const board = sudoku.generate(level);
+    const board = sudoku.generate(level); // Change difficulty level '< 81'
     const solution = sudoku.solve(board);
     this.setState({
       template: board,
@@ -37,6 +37,7 @@ class App extends Component {
     });
   }
   changeSum(val) {
+    console.log(val)
     const value = val.value || '.'
     if(/[1-9]/.test(value) || /\./.test(value)) {
       this.setState({
@@ -52,12 +53,9 @@ class App extends Component {
   }
   win() {
     if(this.state.board === this.state.solution && this.state.board) {
-      // I wanted to to change state 'run' to false to trigger function in Panel.
-      // I'm getting error "Maximum update depth exceeded".
-      // Is this happening because state should be in parent component?
-      // this.setState({run: true});
+      // Can't use set state enabled to false here. (https://stackoverflow.com/questions/48497358/reactjs-maximum-update-depth-exceeded-error?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa)
       return(
-        <Win click={this.getTemplate} time={this.props.time}/>
+        <Win click={this.getTemplate} count={this.state.count} reset={this.reset} pause={this.pause}/>
       )
     }
   }
@@ -77,7 +75,7 @@ class App extends Component {
         <Header />
         <Panel click={this.getTemplate} solve={this.solve} state={this.state} pause={this.pause} reset={this.reset} count={this.count}/>
         <Board template={this.state.template} changeSum={this.changeSum}/>
-        {this.win()} {/*TODO: Remove iniline if statement*/}
+        {this.win()}
       </div>
     )
   }

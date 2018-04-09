@@ -1,8 +1,15 @@
 import React, {Component} from 'react';
+import ReactDOM from 'react-dom';
 import Field from './Field';
 import _ from 'lodash';
 
+
 class Board extends Component {
+  constructor (props) {
+    super(props);
+
+    this.handleFocus = this.handleFocus.bind(this)
+  }
   fields() {
     // let col = -1;
     // let row = -1;
@@ -13,7 +20,7 @@ class Board extends Component {
       // } else {
       //   row++;
       // }
-      return <Field key={idx} id={idx + 1} value={val} />;
+      return <Field key={idx} id={idx} value={val} />;
     })
 
     return _.chunk(items, 9).map(function(group, idx) {
@@ -30,9 +37,24 @@ class Board extends Component {
     //   }
     // }
   }
+  handleFocus(event) {
+    const inputs = document.querySelectorAll('input')
+    const idx = [...inputs].indexOf(event.target);
+    switch (event.keyCode) {
+      case 39:
+        let next = (idx === inputs.length - 1) ? 0 : idx + 1;
+        inputs[next].focus();
+        break;
+      case 37:
+        let prev = idx ? idx - 1 : inputs.length - 1;
+        inputs[prev].focus();
+        break;
+    }
+  }
   render() {
+
     return(
-      <table className="board" onInput={event => this.props.changeSum(event.target)}>
+      <table className="board" onInput={event => this.props.changeSum(event.target)} onKeyUp={event => this.handleFocus(event)}>
         <tbody>
         {this.fields()}
         </tbody>

@@ -29,7 +29,7 @@
 .panel__btn--new-game
   border-radius: 10px 0 0 10px
   box-shadow: 0 0 3px 3px grey
-.panel__btn--new-game:hover
+.panel__btn--new-game:hover, .panel__btn--new-game:focus
   background: goldenrod
 .panel__select
   box-shadow: 0 0 3px 3px grey
@@ -40,14 +40,14 @@
   z-index: 1
   transition: 0.3s
   margin: 0 10px
-.panel__select:hover
+.panel__select:hover, .panel__select:focus
   background: grey
 .panel__select::after
   content: '>'
 .panel__btn--solve
   box-shadow: 0 0 3px 3px grey
   border-radius: 0 10px 10px 0
-.panel__btn--solve:hover
+.panel__btn--solve:hover, .panel__btn--solve:focus
   background: cornflowerblue
 .panel__timer
   width: 100%
@@ -57,6 +57,7 @@
 
 .board
   margin: 0 auto
+  border-collapse: collapse
   //margin-bottom: 20px // Weird firefox bug with margin-bottom/top on table (td-s height behaves like animation)
 .board__row
 
@@ -66,7 +67,7 @@
   justify-content: center
   align-items: center
   font-size: 1.5rem
-  outline: 1px solid black
+  border: 1px solid black
   width: 40px
   height: 40px
 .board__field--input
@@ -74,8 +75,12 @@
   background: lightgray
   color: darkgoldenrod
   text-align: center
-  border: none
+  border: 1px solid black
   outline: 0
+.board__field--input:focus
+  position: relative
+  outline-offset: 2px
+  outline: 5px solid goldenrod
 
 .win
   display: flex
@@ -96,7 +101,7 @@
 .win__btn
   border-radius: 10px 10px 0 0
   background: lightgrey
-.win__btn:hover
+.win__btn:hover, .win__btn:focus
   background: goldenrod
 .win__btn , .win__select
   transition: 0.3s
@@ -107,8 +112,12 @@
 .win__select
   background: darkgrey
   border: none
-.win__select:hover
+.win__select:hover, .win__select:focus
   background: grey
+.win__time
+  text-align: center
+  font-size: 1.5rem
+  padding: 10px 0
 
 //@media (min-width: 600px)
 //  .board
