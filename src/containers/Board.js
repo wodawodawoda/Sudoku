@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Field from './Field';
-import _ from 'lodash';
+import {chunk} from 'lodash';
 
 
 class Board extends Component {

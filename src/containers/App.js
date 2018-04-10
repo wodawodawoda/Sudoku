@@ -2,10 +2,11 @@ import React, {Component} from 'react';
 import sudoku from 'sudoku-umd';
 import '../app.sass';
 
-import Header from './Header'
-import Board from './Board'
-import Panel from './Panel'
-import Win from './Win'
+import Header from './Header';
+import Board from './Board';
+import Panel from './Panel';
+import Win from './Win';
+import Stats from './Stats';
 
 class App extends Component {
   constructor() {
@@ -17,7 +18,8 @@ class App extends Component {
       //counter states
       enabled: false,
       timeout: 1000,
-      count: 0
+      count: 0,
+      level: ''
     }
     this.getTemplate = this.getTemplate.bind(this);
     this.changeSum= this.changeSum.bind(this);
@@ -26,9 +28,15 @@ class App extends Component {
     this.pause= this.pause.bind(this);
     this.count= this.count.bind(this);
   }
+  componentDidMount() {
+    if(!localStorage.SudokuApp) {
+      localStorage.SudokuApp = "[]"
+    }
+  }
   // Set up new sudoku board
   getTemplate(event) {
     const level = event.target.nextElementSibling.value;
+    this.setState({level})
     const board = sudoku.generate(level); // Change difficulty level '< 81'
     const solution = sudoku.solve(board);
     this.setState({
@@ -63,14 +71,21 @@ class App extends Component {
   count() {
     this.setState({count: this.state.count + 1})
   }
+
   render() {
     return this.gamePlay()
   }
+
   gamePlay() {
     // Display Win modal when player wins
     if(this.state.board === this.state.solution && this.state.board) {
+
       return(
-        <Win click={this.getTemplate} count={this.state.count} reset={this.reset} pause={this.pause}/>
+        <Win click={this.getTemplate}
+             count={this.state.count}
+             reset={this.reset}
+             pause={this.pause}
+             level={this.state.level}/>
       )
     } else { // Display game board
       return(
@@ -84,6 +99,7 @@ class App extends Component {
                  count={this.count}/>
           <Board template={this.state.template}
                  changeSum={this.changeSum}/>
+          <Stats />
         </div>
       )
     }

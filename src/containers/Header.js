@@ -3,7 +3,7 @@ import Logo from '../sudoku-logo.svg'
 class Header extends Component {
   render() {
     return(
-      <header className="header">
+      <header className="sudoku__header">
         <Logo width={300} height={190}/>
       </header>
     )

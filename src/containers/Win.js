@@ -1,31 +1,33 @@
 import React, {Component} from 'react';
+import NewGame from './NewGame'
 
 class Win extends Component {
-  componentDidMount() {
+  componentWillMount() {
     this.props.pause() // Pause time
+    this.storeData()
   }
+  storeData() {
+    // Store games statistics
+    const date = () => new Date()
+    const data = JSON.parse(localStorage.SudokuApp)
+    data.push({
+      level: this.props.level,
+      time: this.props.count
+    });
+    console.log(data)
+    localStorage.SudokuApp = JSON.stringify(data);
+  }
+
   render() {
     return(
       <div className="win">
         <h1>You WIN</h1>
-        <div className="win__start">
-          <button className="win__btn win__btn--new-game"
-                  onClick={event => {
-                    this.props.reset(); // Reset timer
-                    this.props.click(event); // Set up new sudoku board
-                  }}>
-            new game
-          </button>
-          <select name="difficulties" id="panelSelect" className="win__select">
-            <option value="easy" className="panel__option">easy</option>
-            <option value="medium" className="panel__option">medium</option>
-            <option value="hard" className="panel__option">hard</option>
-            <option value="very-hard" className="panel__option">very-hard</option>
-            <option value="insane" className="panel__option">insane</option>
-            <option value="inhuman" className="panel__option">inhuman</option>
-          </select>
-          <span className="win__time">Time: {this.props.count}</span>
-        </div>
+        <NewGame component="panel"
+                 reset={this.props.reset}
+                 click={this.props.click}
+                 solve={this.props.solve}
+                 pause={this.props.pause}/>
+        <span className="win__time">Time: {this.props.count}</span>
       </div>
     );
   }
