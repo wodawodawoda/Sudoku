@@ -1,21 +1,21 @@
 import React, {Component} from 'react';
-import NewGame from './NewGame'
+import NewGame from './NewGame';
 import '../styles/win.sass';
 
 class Win extends Component {
   componentWillMount() {
-    this.props.pause() // Pause time
-    this.storeData()
+    this.props.pause(); // Pause time
+    this.storeData();
   }
+
+  // Store games statistics
   storeData() {
-    // Store games statistics
-    const date = () => new Date()
-    const data = JSON.parse(localStorage.SudokuApp)
+    const date = () => new Date();
+    const data = JSON.parse(localStorage.SudokuApp);
     data.push({
       level: this.props.level,
       time: this.props.count
     });
-    console.log(data)
     localStorage.SudokuApp = JSON.stringify(data);
   }
 
@@ -34,4 +34,4 @@ class Win extends Component {
   }
 }
 
-export default Win
+export default Win;

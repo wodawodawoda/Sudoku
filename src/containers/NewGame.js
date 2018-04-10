@@ -7,14 +7,9 @@ const difficultyOptions = [
   'very-hard',
   'insane',
   'inhuman'
-]
+];
 
 class NewGame extends Component {
-  options() {
-    return difficultyOptions.map((val, idx) => {
-      return <option key={idx} value={val} className={`${this.props.component}__option`}>{val}</option>
-    })
-  }
   render() {
     return(
       <div className={`${this.props.component}__start`}>
@@ -32,6 +27,12 @@ class NewGame extends Component {
       </div>
     );
   }
+
+  options() {
+    return difficultyOptions.map((val, idx) => {
+      return <option key={idx} value={val} className={`${this.props.component}__option`}>{val}</option>
+    });
+  }
   solve() {
     if(this.props.component !== 'win') {
       return(
@@ -42,7 +43,7 @@ class NewGame extends Component {
                 }}>
           solve
         </button>
-      )
+      );
     }
   }
 }

@@ -20,8 +20,8 @@ class Board extends Component {
       } else {
         row++;
       }
-      return <Field key={idx} id={idx} value={val} col={col} row={row} />;
-    })
+      return <Field key={idx} id={idx} value={val} col={col} row={row} />
+    });
 
     return _.chunk(items, 9).map(function(group, idx) {
       return <tr key={idx} className="board__row">{group}</tr>
@@ -51,8 +51,8 @@ class Board extends Component {
         {this.fields()}
         </tbody>
       </table>
-    )
+    );
   }
 }
 
-export default Board
+export default Board;

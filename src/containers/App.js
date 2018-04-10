@@ -22,6 +22,7 @@ class App extends Component {
       count: 0,
       level: ''
     }
+
     this.getTemplate = this.getTemplate.bind(this);
     this.changeSum= this.changeSum.bind(this);
     this.solve= this.solve.bind(this);
@@ -86,7 +87,7 @@ class App extends Component {
              reset={this.reset}
              pause={this.pause}
              level={this.state.level}/>
-      )
+      );
     } else { // Display game board
       return(
         <div className="sudoku">
@@ -101,10 +102,10 @@ class App extends Component {
                  changeSum={this.changeSum}/>
           <Stats />
         </div>
-      )
+      );
     }
   }
 }
 
 
-export default App
+export default App;

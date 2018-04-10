@@ -8,8 +8,8 @@ class Header extends Component {
       <header className="sudoku__header">
         <Logo width={300} height={190}/>
       </header>
-    )
+    );
   }
 }
 
-export default Header
+export default Header;

@@ -17,10 +17,10 @@ class Field extends Component {
           aria-label={`${this.props.col + 1}-${this.props.row + 1}`}>
         {field}
       </td>
-    )
+    );
   }
 }
 
 
 
-export default Field
+export default Field;
