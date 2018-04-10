@@ -1,11 +1,10 @@
 import React, {Component} from 'react';
-
+import Logo from '../sudoku-logo.svg'
 class Header extends Component {
   render() {
     return(
       <header className="header">
-        <h1 className="header__name">sudoku</h1>
-        <p className="header__text">Simple sudoku game, have fun!</p>
+        <Logo width={300} height={190}/>
       </header>
     )
   }

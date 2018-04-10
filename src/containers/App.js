@@ -53,15 +53,6 @@ class App extends Component {
       template: this.state.solution
     });
   }
-  // Display Win modal when player wins
-  win() {
-    if(this.state.board === this.state.solution && this.state.board) {
-      // Can't use set state enabled to false here. (https://stackoverflow.com/questions/48497358/reactjs-maximum-update-depth-exceeded-error?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa)
-      return(
-        <Win click={this.getTemplate} count={this.state.count} reset={this.reset} pause={this.pause}/>
-      )
-    }
-  }
   // Counter functions
   reset() {
     this.setState({enabled: true, count: 0});
@@ -73,21 +64,31 @@ class App extends Component {
     this.setState({count: this.state.count + 1})
   }
   render() {
-    return(
-      <div className="sudoku">
-        <Header />
-        <Panel click={this.getTemplate}
-               solve={this.solve}
-               state={this.state}
-               pause={this.pause}
-               reset={this.reset}
-               count={this.count}/>
-        <Board template={this.state.template}
-               changeSum={this.changeSum}/>
-        {this.win()}
-      </div>
-    )
+    return this.gamePlay()
+  }
+  gamePlay() {
+    // Display Win modal when player wins
+    if(this.state.board === this.state.solution && this.state.board) {
+      return(
+        <Win click={this.getTemplate} count={this.state.count} reset={this.reset} pause={this.pause}/>
+      )
+    } else { // Display game board
+      return(
+        <div className="sudoku">
+          <Header />
+          <Panel click={this.getTemplate}
+                 solve={this.solve}
+                 state={this.state}
+                 pause={this.pause}
+                 reset={this.reset}
+                 count={this.count}/>
+          <Board template={this.state.template}
+                 changeSum={this.changeSum}/>
+        </div>
+      )
+    }
   }
 }
+
 
 export default App
