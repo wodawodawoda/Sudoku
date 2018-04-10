@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import ReactInterval from 'react-interval';
 import NewGame from './NewGame'
+import '../styles/panel.sass';
 
 
 

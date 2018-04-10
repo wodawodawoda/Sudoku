@@ -1,0 +1,39 @@
+.panel, .win__btn
+  display: flex
+  flex-flow: row wrap
+  justify-content: space-around
+  align-items: center
+.panel__btn
+  text-transform: uppercase
+  font-size: 1.3rem
+  padding: 20px
+  border: 0
+  transition: 0.3s
+.panel__btn--new-game
+  border-radius: 10px 0 0 10px
+  box-shadow: 0 0 3px 3px grey
+.panel__btn--new-game:hover, .panel__btn--new-game:focus
+  background: goldenrod
+.panel__select
+  box-shadow: 0 0 3px 3px grey
+  font-size: 1.3rem
+  padding: 20px
+  background: grey
+  border: 0
+  z-index: 1
+  transition: 0.3s
+  margin: 0 10px
+.panel__select:hover, .panel__select:focus
+  background: darkgrey
+.panel__select::after
+  content: '>'
+.panel__btn--solve
+  box-shadow: 0 0 3px 3px grey
+  border-radius: 0 10px 10px 0
+.panel__btn--solve:hover, .panel__btn--solve:focus
+  background: cornflowerblue
+.panel__timer
+  width: 100%
+  text-align: center
+  font-size: 2rem
+  margin-top: 20px

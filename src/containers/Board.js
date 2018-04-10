@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Field from './Field';
 import {chunk} from 'lodash';
+import '../styles/board.sass';
 
 
 class Board extends Component {
@@ -10,31 +11,21 @@ class Board extends Component {
     this.handleFocus = this.handleFocus.bind(this)
   }
   fields() {
-    // let col = -1;
-    // let row = -1;
+    let col = -1;
+    let row = -1;
     const items = [...this.props.template].map((val, idx) => {
-      // if(!(idx % 9)) {
-      //   col++;
-      //   row = 0;
-      // } else {
-      //   row++;
-      // }
-      return <Field key={idx} id={idx} value={val} />;
+      if(!(idx % 9)) {
+        col++;
+        row = 0;
+      } else {
+        row++;
+      }
+      return <Field key={idx} id={idx} value={val} col={col} row={row} />;
     })
 
     return _.chunk(items, 9).map(function(group, idx) {
       return <tr key={idx} className="board__row">{group}</tr>
     });
-    // Match 9 sudoku squares that contain 9 fields  input = [[row],[row],[row],[row],[row]]
-    // for(let i = 0; i < 9; i++) {
-    //   let team = 1;
-    //   if(i === 3 || i === 6) team = team + 3
-    //   for(let j = 0; j < 9; j++) {
-    //     if(j < 3) field[i][j].addClass(`team${team}`)
-    //     else if(j < 6) field[i][j].addClass(`team${team + 1}`)
-    //     else field[i][j].addClass(`team${team + 2}`)
-    //   }
-    // }
   }
   // On board focus management
   handleFocus(event) {

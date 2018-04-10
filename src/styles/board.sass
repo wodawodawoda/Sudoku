@@ -1,0 +1,23 @@
+.board
+  margin: 0 auto
+  border-collapse: collapse
+.board__field
+  background: white
+  display: inline-flex
+  justify-content: center
+  align-items: center
+  font-size: 1.5rem
+  border: 1px solid black
+  width: 32px
+  height: 32px
+.board__field--input
+  font-size: 1.6rem // in chrome lower values cause bugs in table layout
+  background: lightgray
+  color: darkgoldenrod
+  text-align: center
+  border: 1px solid black
+  outline: 0
+.board__field--input:focus
+  position: relative
+  outline-offset: 2px
+  outline: 5px solid goldenrod

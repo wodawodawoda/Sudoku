@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import NewGame from './NewGame'
+import '../styles/win.sass';
 
 class Win extends Component {
   componentWillMount() {

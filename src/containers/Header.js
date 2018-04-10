@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
-import Logo from '../sudoku-logo.svg'
+import Logo from '../sudoku-logo.svg';
+import '../styles/header.sass';
+
 class Header extends Component {
   render() {
     return(

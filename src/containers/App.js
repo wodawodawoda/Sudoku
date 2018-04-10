@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import sudoku from 'sudoku-umd';
-import '../app.sass';
+import '../styles/main.sass';
+import '../styles/media.sass';
 
 import Header from './Header';
 import Board from './Board';
@@ -47,7 +48,6 @@ class App extends Component {
   }
   // Change player board values string
   changeSum(val) {
-    console.log(val)
     const value = val.value || '.'
     if(/[1-9]/.test(value) || /\./.test(value)) {
       this.setState({

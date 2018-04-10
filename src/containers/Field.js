@@ -12,8 +12,9 @@ class Field extends Component {
                      id={this.props.id}/>
     }
     return (
-      <td className={`board__field board__field${this.props.id}`}
-          id={'field-' + this.props.id}>
+      <td className="board__field"
+          id={'field-' + this.props.id}
+          aria-label={`${this.props.col + 1}-${this.props.row + 1}`}>
         {field}
       </td>
     )
