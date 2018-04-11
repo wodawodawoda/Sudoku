@@ -8,7 +8,7 @@ require("babel-polyfill");
 const env = process.env.NODE_ENV || 'development';
 const plugins = [
 	new HtmlWebpackPlugin({
-		template: 'src/index.html',
+		template: 'src/html/index.html',
 		filename: 'index.html',
 		inject: 'body'
 	}),
@@ -31,7 +31,7 @@ module.exports = {
     entry: [
 		'react-hot-loader/patch',
 		'babel-polyfill',
-		'./src/index.js'
+		'./src/js/index.js'
     ],
     output: {
         path: path.resolve(__dirname, 'build'),

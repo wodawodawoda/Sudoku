@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import '../styles/stats.sass';
+import '../../styles/stats.sass';
 
 class Stats extends Component {
   constructor (props) {

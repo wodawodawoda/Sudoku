@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Field from './Field';
 import {chunk} from 'lodash';
-import '../styles/board.sass';
+import '../../styles/board.sass';
 
 
 class Board extends Component {

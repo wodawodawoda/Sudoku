@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import Logo from '../sudoku-logo.svg';
-import '../styles/header.sass';
+import Logo from '../../assets/sudoku-logo.svg';
+import '../../styles/header.sass';
 
 class Header extends Component {
   render() {

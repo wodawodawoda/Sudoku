@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import sudoku from 'sudoku-umd';
-import '../styles/main.sass';
-import '../styles/media.sass';
+import '../../styles/main.sass';
+import '../../styles/media.sass';
 
 import Header from './Header';
 import Board from './Board';
